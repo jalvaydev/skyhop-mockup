@@ -9,7 +9,7 @@ function Modal() {
         <div className="bg-white opacity-100 h-[623px] w-[826px] p-4 mx-auto rounded-3xl my-auto text-[#0C2948] ">
           <ModalHeader />
           <ModalContent />
-          <ModalFooter />
+          {/* <ModalFooter /> */}
         </div>
       </div>
     </div>

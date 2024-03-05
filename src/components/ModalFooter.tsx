@@ -6,7 +6,7 @@ function ModalFooter() {
       </p>
       <div className="flex justify-center gap-3">
         <button
-          type="button"
+          type="submit"
           className="px-12 py-2 text-2xs font-semibold text-white bg-[#1F3A68] rounded-lg shadow-sm hover:bg-[#234175] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#294980]"
         >
           Continue Import

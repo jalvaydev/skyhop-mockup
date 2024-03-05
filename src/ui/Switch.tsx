@@ -5,9 +5,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function SwitchButton() {
-  const [enabled, setEnabled] = useState(false);
+type SwitchButtonProps = {
+  enabled: boolean;
+  setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
+export default function SwitchButton({ enabled, setEnabled }: SwitchButtonProps) {
   return (
     <Switch
       checked={enabled}
