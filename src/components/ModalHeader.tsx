@@ -1,4 +1,5 @@
 import { X } from 'lucide-react';
+import Seperator from '../ui/Seperator';
 
 function ModalHeader() {
   return (
@@ -8,12 +9,14 @@ function ModalHeader() {
           <X className="h-4 my-auto" strokeWidth={3} />
         </div>
       </div>
-      <div className="flex flex-col-reverse h-12 pb-3 mx-auto">
-        <h3 className="text-xl font-bold text-[rgb(12,41,72)] text-center">
+      <div className="flex flex-col-reverse h-8 pb-3 mx-auto">
+        <h3 className="text-2xl leading-6 font-bold text-[rgb(12,41,72)] text-center">
           Document Upload
         </h3>
       </div>
-      <div className="mx-auto border-b-2 w-44 border-gray-150"> </div>
+      <div className="mx-auto w-44">
+        <Seperator />
+      </div>
     </>
   );
 }

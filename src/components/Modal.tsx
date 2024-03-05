@@ -1,3 +1,4 @@
+import ModalContent from './ModalContent';
 import ModalHeader from './ModalHeader';
 
 function Modal() {
@@ -6,6 +7,7 @@ function Modal() {
       <div className="flex h-full">
         <div className="bg-white opacity-100 h-[623px] w-[826px] p-4 mx-auto rounded-3xl my-auto">
           <ModalHeader />
+          <ModalContent />
         </div>
       </div>
     </div>
