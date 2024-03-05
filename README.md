@@ -3,7 +3,8 @@
 <p align="center">This is a demo project to recreate the provided reference image using React.</p>
 
 Demo
-![Screenshot from 2024-03-04 21-30-38](https://github.com/jalvaydev/skyhop-mockup/assets/53841017/a6ff81c0-3353-4a16-b6db-16c4385b815c)
+![demo](https://github.com/jalvaydev/skyhop-mockup/assets/53841017/d400d47d-b600-4a06-ad60-d7352f3a877d)
+
 
 Reference Image
 ![mockup-reference](https://github.com/jalvaydev/skyhop-mockup/assets/53841017/c30c6a3b-8445-4f53-8ec7-717168847c87)
@@ -21,6 +22,8 @@ The following packages are used as dependencies in this project:
 - [Lucide](https://lucide.dev/)
 - [HeadlessUI](https://headlessui.com/)
 - [React Dropzone](https://react-dropzone.js.org/)
+- [React Datepicker](https://reactdatepicker.com/)
+
 
 ## Installation
 
