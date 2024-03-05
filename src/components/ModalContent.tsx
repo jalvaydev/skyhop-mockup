@@ -29,17 +29,17 @@ const clients: DropdownOption[] = [
 
 export interface IFormValues {
   import: DropdownOption;
-  toleranceLevel: Date;
+  toleranceLevel: Date | null;
   splitSchedule: number;
   clientType: string;
   client1: number;
-  client1Date: Date;
+  client1Date: Date | null;
   client2: number;
-  client2Date: Date;
+  client2Date: Date | null;
   client3: number;
-  client3Date: Date;
+  client3Date: Date | null;
   client4: number;
-  client4Date: Date;
+  client4Date: Date | null;
 }
 
 function ModalContent() {
@@ -51,17 +51,17 @@ function ModalContent() {
   } = useForm<IFormValues>({
     defaultValues: {
       import: {},
-      toleranceLevel: new Date(),
+      toleranceLevel: null,
       splitSchedule: 0,
       clientType: '',
       client1: 0,
-      client1Date: new Date(),
+      client1Date: null,
       client2: 0,
-      client2Date: new Date(),
+      client2Date: null,
       client3: 0,
-      client3Date: new Date(),
+      client3Date: null,
       client4: 0,
-      client4Date: new Date(),
+      client4Date: null,
     },
   });
   const [toleranceWindowStatus, setToleranceWindowStatus] = useState(true);
@@ -247,7 +247,7 @@ function ModalContent() {
                         <DatePicker
                           selected={value}
                           onChange={onChange}
-                          value={value.toString()}
+                          value={value?.toString()}
                           showTimeSelect
                           onBlur={onBlur}
                           customInput={<ClientDateInput />}
@@ -288,7 +288,7 @@ function ModalContent() {
                         <DatePicker
                           selected={value}
                           onChange={onChange}
-                          value={value.toString()}
+                          value={value?.toString()}
                           showTimeSelect
                           customInput={<ClientDateInput />}
                         />
@@ -318,12 +318,22 @@ function ModalContent() {
                     )}
                   />{' '}
                   <div className="flex my-auto">
-                    <DatePicker
-                      selected={startDate}
-                      showTimeSelect
-                      onChange={(date) => setStartDate(date!)}
-                      customInput={<ClientDateInput />}
-                    />{' '}
+                    <Controller
+                      name="client3Date"
+                      control={control}
+                      rules={{
+                        required: 'Please select an client.',
+                      }}
+                      render={({ field: { onChange, value, onBlur } }) => (
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          value={value?.toString()}
+                          showTimeSelect
+                          customInput={<ClientDateInput />}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
               </div>
@@ -348,12 +358,22 @@ function ModalContent() {
                     )}
                   />
                   <div className="flex my-auto">
-                    <DatePicker
-                      selected={startDate}
-                      showTimeSelect
-                      onChange={(date) => setStartDate(date)}
-                      customInput={<ClientDateInput />}
-                    />{' '}
+                    <Controller
+                      name="client4Date"
+                      control={control}
+                      rules={{
+                        required: 'Please select an client.',
+                      }}
+                      render={({ field: { onChange, value, onBlur } }) => (
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          value={value?.toString()}
+                          showTimeSelect
+                          customInput={<ClientDateInput />}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
               </div>
