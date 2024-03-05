@@ -50,10 +50,10 @@ function ModalContent() {
     formState: { errors, isDirty, isSubmitting, touchedFields, submitCount },
   } = useForm<IFormValues>({
     defaultValues: {
-      import: { id: 0, name: '' },
+      import: {},
       toleranceLevel: new Date(),
       splitSchedule: 0,
-      clientType: 'single',
+      clientType: '',
       client1: 0,
       client1Date: new Date(),
       client2: 0,
@@ -71,7 +71,9 @@ function ModalContent() {
     d.clientType = d.clientType === '0' ? 'single' : 'multiple';
     console.log(d);
   };
+
   const [startDate, setStartDate] = useState<Date | null>(null);
+
   const ToleranceWindowInput = forwardRef(
     ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
       <button className="flex gap-2" onClick={onClick} ref={ref}>
@@ -83,34 +85,10 @@ function ModalContent() {
     ),
   );
 
-  const Client1DateInput = forwardRef(
-    ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
+  const ClientDateInput = forwardRef(
+    ({ onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
       <button className="flex my-auto" onClick={onClick} ref={ref}>
         <Clock className="w-5 h-5 my-auto" />
-      </button>
-    ),
-  );
-
-  const Client2DateInput = forwardRef(
-    ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
-      <button className="flex gap-2" onClick={onClick} ref={ref}>
-        <Clock className="w-5 h-5" />
-      </button>
-    ),
-  );
-
-  const Client3DateInput = forwardRef(
-    ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
-      <button className="flex gap-2" onClick={onClick} ref={ref}>
-        <Clock className="w-5 h-5" />
-      </button>
-    ),
-  );
-
-  const Client4DateInput = forwardRef(
-    ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
-      <button className="flex gap-2" onClick={onClick} ref={ref}>
-        <Clock className="w-5 h-5" />
       </button>
     ),
   );
@@ -166,11 +144,22 @@ function ModalContent() {
                   <>
                     <div className="border-l border-black"></div>
                     <div className="flex gap-2">
-                      <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date!)}
-                        customInput={<ToleranceWindowInput />}
-                        isClearable
+                      <Controller
+                        name="toleranceLevel"
+                        control={control}
+                        rules={{
+                          required: 'Please select an client.',
+                        }}
+                        render={({ field: { onChange, value, onBlur } }) => (
+                          <DatePicker
+                            selected={value}
+                            onChange={onChange}
+                            value={value?.toLocaleTimeString()}
+                            showTimeSelect
+                            isClearable
+                            customInput={<ToleranceWindowInput />}
+                          />
+                        )}
                       />
                     </div>
                   </>
@@ -246,15 +235,25 @@ function ModalContent() {
                         onBlur={onBlur}
                       />
                     )}
-                  />{' '}
+                  />
                   <div className="flex my-auto">
-                    {' '}
-                    <DatePicker
-                      selected={startDate}
-                      onChange={(date) => setStartDate(date!)}
-                      showTimeSelect
-                      customInput={<Client1DateInput />}
-                    />{' '}
+                    <Controller
+                      name="client1Date"
+                      control={control}
+                      rules={{
+                        required: 'Please select an client.',
+                      }}
+                      render={({ field: { onChange, value, onBlur } }) => (
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          value={value.toString()}
+                          showTimeSelect
+                          onBlur={onBlur}
+                          customInput={<ClientDateInput />}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
               </div>
@@ -279,12 +278,22 @@ function ModalContent() {
                     )}
                   />{' '}
                   <div className="flex my-auto">
-                    <DatePicker
-                      selected={startDate}
-                      showTimeSelect
-                      onChange={(date) => setStartDate(date!)}
-                      customInput={<Client2DateInput />}
-                    />{' '}
+                    <Controller
+                      name="client2Date"
+                      control={control}
+                      rules={{
+                        required: 'Please select an client.',
+                      }}
+                      render={({ field: { onChange, value, onBlur } }) => (
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          value={value.toString()}
+                          showTimeSelect
+                          customInput={<ClientDateInput />}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
               </div>
@@ -313,7 +322,7 @@ function ModalContent() {
                       selected={startDate}
                       showTimeSelect
                       onChange={(date) => setStartDate(date!)}
-                      customInput={<Client3DateInput />}
+                      customInput={<ClientDateInput />}
                     />{' '}
                   </div>
                 </div>
@@ -343,7 +352,7 @@ function ModalContent() {
                       selected={startDate}
                       showTimeSelect
                       onChange={(date) => setStartDate(date)}
-                      customInput={<Client4DateInput />}
+                      customInput={<ClientDateInput />}
                     />{' '}
                   </div>
                 </div>
