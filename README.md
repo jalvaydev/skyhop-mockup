@@ -8,7 +8,6 @@ Demo
 Reference Image
 ![mockup-reference](https://github.com/jalvaydev/skyhop-mockup/assets/53841017/c30c6a3b-8445-4f53-8ec7-717168847c87)
 
-
 ## Dependencies
 
 The following packages are used as dependencies in this project:
@@ -21,7 +20,7 @@ The following packages are used as dependencies in this project:
 - [ESLint](https://eslint.org/)
 - [Lucide](https://lucide.dev/)
 - [HeadlessUI](https://headlessui.com/)
-  
+- [React Dropzone](https://react-dropzone.js.org/)
 
 ## Installation
 

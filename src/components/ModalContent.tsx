@@ -3,6 +3,8 @@ import Seperator from '../ui/Seperator';
 import Dropdown, { DropdownOption } from './Dropdown';
 import SwitchButton from '../ui/Switch';
 import Radio from '../ui/Radio';
+import { useDropzone } from 'react-dropzone';
+import { useMemo } from 'react';
 
 const manifests: DropdownOption[] = [
   { id: 1, name: 'Passport' },
@@ -22,7 +24,38 @@ const clients: DropdownOption[] = [
   { id: 6, name: 'Yoda' },
 ];
 
+const baseStyle = {
+  transition: 'border .24s ease-in-out',
+};
+
+const focusedStyle = {
+  borderColor: '#2196f3',
+};
+
+const acceptStyle = {
+  borderColor: '#00e676',
+};
+
+const rejectStyle = {
+  borderColor: '#ff1744',
+};
+
 function ModalContent() {
+  const { acceptedFiles, getRootProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({
+      maxFiles: 1,
+    });
+
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isFocused ? focusedStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isFocused, isDragAccept, isDragReject],
+  );
+
   return (
     <div className="mx-12 mt-6">
       <div className="flex flex-row ">
@@ -34,12 +67,26 @@ function ModalContent() {
               Select a manifest you'd like to import
             </label>
             <div className="flex flex-col gap-1 p-3 border border-gray-300 rounded-xl">
-              <div className="flex flex-col h-20 p-2 border border-gray-300 border-dashed rounded-lg">
-                <div className="my-auto">
-                  <FileIcon className="h-5 mx-auto" />
-                  <p className="pt-2 text-center text-2xs">
-                    Drag & Drop Here Or <b>Browse</b>
-                  </p>
+              <div {...getRootProps({ className: 'dropzone' })}>
+                <div
+                  style={style}
+                  className="flex flex-col h-20 p-2 border border-gray-300 border-dashed rounded-lg cursor-pointer"
+                >
+                  <div className="my-auto">
+                    <FileIcon className="h-5 mx-auto" />
+                    {acceptedFiles.length === 0 && (
+                      <p className="pt-2 text-center text-2xs">
+                        Drag & Drop Here Or <b>Browse</b>
+                      </p>
+                    )}
+                    {acceptedFiles.length > 0 && (
+                      <div className="">
+                        <p className="pt-2 text-center text-2xs">
+                          {acceptedFiles[0].name} - {acceptedFiles[0].size} bytes
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="mx-auto ">
@@ -108,22 +155,22 @@ function ModalContent() {
             />
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-38" optionName="Client" options={clients} />
+              <Dropdown className="w-40" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 2</p>
-              <Dropdown className="w-38" optionName="Client" options={clients} />
+              <Dropdown className="w-40" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 3</p>
-              <Dropdown className="w-38" optionName="Client" options={clients} />
+              <Dropdown className="w-40" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 4</p>
-              <Dropdown className="w-38" optionName="Client" options={clients} />
+              <Dropdown className="w-40" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
           </div>
