@@ -14,7 +14,7 @@ function ModalHeader() {
           Document Upload
         </h3>
       </div>
-      <div className="mx-auto w-44">
+      <div className="w-56 mx-auto">
         <Seperator />
       </div>
     </>

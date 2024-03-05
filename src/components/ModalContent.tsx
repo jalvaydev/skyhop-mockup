@@ -24,10 +24,10 @@ const clients: DropdownOption[] = [
 
 function ModalContent() {
   return (
-    <div className="text-[#0C2948] mx-12 mt-6">
+    <div className="mx-12 mt-6">
       <div className="flex flex-row ">
         <div className="flex flex-col w-[420px] pr-8 gap-2">
-          <Dropdown options={manifests} optionName="manifest" />
+          <Dropdown options={manifests} optionName="Import Name" />
           <Seperator />
           <div>
             <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
@@ -84,6 +84,7 @@ function ModalContent() {
               Split schedule using social distancing?
             </p>
             <Radio
+              radioName={'split-schedule'}
               options={[
                 { id: 'yes', title: 'Yes' },
                 { id: 'no', title: 'No' },
@@ -99,6 +100,7 @@ function ModalContent() {
           <div>
             <p className="font-bold leading-5 text-2xs">Client</p>
             <Radio
+              radioName={'client'}
               options={[
                 { id: 'single', title: 'Single' },
                 { id: 'multiple', title: 'Multiple' },
@@ -106,44 +108,25 @@ function ModalContent() {
             />
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-38" optionName="client" options={clients} />
+              <Dropdown className="w-38" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
-              <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-38" optionName="client" options={clients} />
+              <p className="my-auto text-2xs">Testing Center 2</p>
+              <Dropdown className="w-38" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
-              <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-38" optionName="client" options={clients} />
+              <p className="my-auto text-2xs">Testing Center 3</p>
+              <Dropdown className="w-38" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
             <div className="flex gap-2 mt-5">
-              <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-38" optionName="client" options={clients} />
+              <p className="my-auto text-2xs">Testing Center 4</p>
+              <Dropdown className="w-38" optionName="Client" options={clients} />
               <Clock className="w-5 h-5 my-auto" />
             </div>
           </div>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 mt-4">
-        <p className="font-semibold leading-4 text-center ">
-          Data in the import field is correct. Please press Continue to import.
-        </p>
-        <div className="flex justify-center gap-3">
-          <button
-            type="button"
-            className="px-12 py-2 text-2xs font-semibold text-white bg-[#1F3A68] rounded-lg shadow-sm hover:bg-[#234175] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#294980]"
-          >
-            Continue Import
-          </button>
-          <button
-            type="button"
-            className="px-12 py-2 text-orange-400 border-2 border-orange-300 rounded-lg shadow-sm text-2xs hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-200"
-          >
-            Cancel
-          </button>
         </div>
       </div>
     </div>

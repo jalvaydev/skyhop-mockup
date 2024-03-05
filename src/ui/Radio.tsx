@@ -3,7 +3,13 @@ type RadioOption = {
   title: string;
 };
 
-export default function Radio({ options }: { options: RadioOption[] }) {
+export default function Radio({
+  options,
+  radioName,
+}: {
+  options: RadioOption[];
+  radioName: string;
+}) {
   return (
     <div>
       <fieldset className="mt-4">
@@ -13,9 +19,9 @@ export default function Radio({ options }: { options: RadioOption[] }) {
             <div key={option.id} className="flex items-center">
               <input
                 id={option.id}
-                name="split-schedule"
+                name={radioName}
                 type="radio"
-                className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-600"
+                className="w-4 h-4 text-bg-[#1F3A68] border-gray-300 focus:ring-bg-[#1F3A68]"
               />
               <label
                 htmlFor={option.id}
