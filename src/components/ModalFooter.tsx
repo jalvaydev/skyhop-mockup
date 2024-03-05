@@ -1,7 +1,7 @@
 function ModalFooter() {
   return (
     <div className="flex flex-col gap-4 mt-4">
-      <p className="font-semibold leading-4 text-center ">
+      <p className="text-xs font-semibold leading-4 text-center ">
         Data in the import field is correct. Please press Continue to import.
       </p>
       <div className="flex justify-center gap-3">

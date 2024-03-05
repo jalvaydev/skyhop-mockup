@@ -58,7 +58,7 @@ function ModalContent() {
 
   return (
     <div className="mx-12 mt-6">
-      <div className="flex flex-row ">
+      <div className="flex flex-row gap-4">
         <div className="flex flex-col w-[420px] pr-8 gap-2">
           <Dropdown options={manifests} optionName="Import Name" />
           <Seperator />
@@ -66,11 +66,11 @@ function ModalContent() {
             <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
               Select a manifest you'd like to import
             </label>
-            <div className="flex flex-col gap-1 p-3 border border-gray-300 rounded-xl">
+            <div className="flex flex-col h-40 gap-1 p-3 border border-gray-300 rounded-xl">
               <div {...getRootProps({ className: 'dropzone' })}>
                 <div
                   style={style}
-                  className="flex flex-col h-20 p-2 border border-gray-300 border-dashed rounded-lg cursor-pointer"
+                  className="flex flex-col h-24 p-2 border border-gray-300 border-dashed rounded-lg cursor-pointer"
                 >
                   <div className="my-auto">
                     <FileIcon className="h-5 mx-auto" />
@@ -104,14 +104,16 @@ function ModalContent() {
             <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
               Elapse Data Checking
             </label>
-            <p className="text-[#2EAC8A] text-2xs font-medium">No Elapsed Dates!</p>
+            <div className="mt-2">
+              <p className="text-[#2EAC8A] text-2xs font-medium">No Elapsed Dates!</p>
+            </div>
           </div>
           <Seperator />
           <div>
             <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
               Tolerance Window
             </label>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-2">
               <div className="flex gap-2 my-auto">
                 <SwitchButton />
                 <p className="my-auto font-normal text-2xs ">Toggle ON</p>
@@ -155,23 +157,31 @@ function ModalContent() {
             />
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 1</p>
-              <Dropdown className="w-40" optionName="Client" options={clients} />
-              <Clock className="w-5 h-5 my-auto" />
+              <div className="flex">
+                <Dropdown className="w-40 px-2" optionName="Client" options={clients} />
+                <Clock className="w-5 h-5 my-auto" />
+              </div>
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 2</p>
-              <Dropdown className="w-40" optionName="Client" options={clients} />
-              <Clock className="w-5 h-5 my-auto" />
+              <div className="flex">
+                <Dropdown className="w-40 px-2" optionName="Client" options={clients} />
+                <Clock className="w-5 h-5 my-auto" />
+              </div>
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 3</p>
-              <Dropdown className="w-40" optionName="Client" options={clients} />
-              <Clock className="w-5 h-5 my-auto" />
+              <div className="flex">
+                <Dropdown className="w-40 px-2" optionName="Client" options={clients} />
+                <Clock className="w-5 h-5 my-auto" />
+              </div>
             </div>
             <div className="flex gap-2 mt-5">
               <p className="my-auto text-2xs">Testing Center 4</p>
-              <Dropdown className="w-40" optionName="Client" options={clients} />
-              <Clock className="w-5 h-5 my-auto" />
+              <div className="flex">
+                <Dropdown className="w-40 px-2" optionName="Client" options={clients} />
+                <Clock className="w-5 h-5 my-auto" />
+              </div>
             </div>
           </div>
         </div>
