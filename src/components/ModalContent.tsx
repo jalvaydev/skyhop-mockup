@@ -1,12 +1,11 @@
-import { Clock, FileIcon } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import Seperator from '../ui/Seperator';
 import Dropdown, { DropdownOption } from './Dropdown';
 import SwitchButton from '../ui/Switch';
-import Radio, { RadioOption } from '../ui/Radio';
+import Radio from '../ui/Radio';
 import FileUploader from './FileUploader';
 import { forwardRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import ModalFooter from './ModalFooter';
 import DatePicker from 'react-datepicker';
 
 const manifests: DropdownOption[] = [
@@ -43,12 +42,7 @@ export interface IFormValues {
 }
 
 function ModalContent() {
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors, isDirty, isSubmitting, touchedFields, submitCount },
-  } = useForm<IFormValues>({
+  const { handleSubmit, register, control } = useForm<IFormValues>({
     defaultValues: {
       import: {},
       toleranceLevel: null,
@@ -71,8 +65,6 @@ function ModalContent() {
     d.clientType = d.clientType === '0' ? 'single' : 'multiple';
     console.log(d);
   };
-
-  const [startDate, setStartDate] = useState<Date | null>(null);
 
   const ToleranceWindowInput = forwardRef(
     ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
@@ -198,7 +190,7 @@ function ModalContent() {
             </div>
             <Seperator />
             <div>
-              <p className="font-bold leading-5 text-2xs">Client</p>{' '}
+              <p className="font-bold leading-5 text-2xs">Client</p>
               <Controller
                 name="import"
                 control={control}
@@ -276,7 +268,7 @@ function ModalContent() {
                         onBlur={onBlur}
                       />
                     )}
-                  />{' '}
+                  />
                   <div className="flex my-auto">
                     <Controller
                       name="client2Date"
@@ -316,7 +308,7 @@ function ModalContent() {
                         onBlur={onBlur}
                       />
                     )}
-                  />{' '}
+                  />
                   <div className="flex my-auto">
                     <Controller
                       name="client3Date"
