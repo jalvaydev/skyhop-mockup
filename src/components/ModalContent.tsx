@@ -71,7 +71,7 @@ function ModalContent() {
     d.clientType = d.clientType === '0' ? 'single' : 'multiple';
     console.log(d);
   };
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(null);
   const ToleranceWindowInput = forwardRef(
     ({ value, onClick }: any, ref: React.ForwardedRef<HTMLButtonElement>) => (
       <button className="flex gap-2" onClick={onClick} ref={ref}>
@@ -117,7 +117,7 @@ function ModalContent() {
 
   return (
     <div className="mx-12 mt-6">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form id="document-upload-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-row gap-4">
           <div className="flex flex-col w-[420px] pr-8 gap-2">
             <Controller
@@ -342,7 +342,7 @@ function ModalContent() {
                     <DatePicker
                       selected={startDate}
                       showTimeSelect
-                      onChange={(date) => setStartDate(date!)}
+                      onChange={(date) => setStartDate(date)}
                       customInput={<Client4DateInput />}
                     />{' '}
                   </div>
@@ -351,7 +351,6 @@ function ModalContent() {
             </div>
           </div>
         </div>
-        <ModalFooter />
       </form>
     </div>
   );
