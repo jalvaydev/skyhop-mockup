@@ -34,7 +34,7 @@ function FileUploader() {
     [isFocused, isDragAccept, isDragReject],
   );
 
-  const [progress, setProgress] = useState(13);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (acceptedFiles.length === 0) {
