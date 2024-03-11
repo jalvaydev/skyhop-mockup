@@ -8,6 +8,7 @@ import { forwardRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { Toaster } from '../ui/toaster';
+import { toast } from '../ui/use-toast';
 
 const manifests: DropdownOption[] = [
   { id: 1, name: 'Passport' },
@@ -27,7 +28,7 @@ const clients: DropdownOption[] = [
   { id: 6, name: 'Yoda' },
 ];
 
-export interface IFormValues {
+export type IFormValues = {
   import: DropdownOption;
   toleranceLevel: Date | null;
   splitSchedule: number;
@@ -40,7 +41,7 @@ export interface IFormValues {
   client3Date: Date | null;
   client4: number;
   client4Date: Date | null;
-}
+};
 
 function ModalContent() {
   const { handleSubmit, register, control } = useForm<IFormValues>({
@@ -65,6 +66,10 @@ function ModalContent() {
     d.splitSchedule = Number(d.splitSchedule);
     d.clientType = d.clientType === '0' ? 'single' : 'multiple';
     console.log(d);
+    toast({
+      title: 'Submitted Form',
+      description: `The form has been successfully submitted.`,
+    });
   };
 
   const ToleranceWindowInput = forwardRef(
