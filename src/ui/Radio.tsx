@@ -18,7 +18,7 @@ export default function Radio({
     <div>
       <fieldset className="mt-4">
         <legend className="sr-only">Split schedule using social distancing?</legend>
-        <div className="space-y-4 sm:flex sm:items-center sm:space-x-6 sm:space-y-0">
+        <div className="space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0">
           {options.map((option) => (
             <div key={option.id} className="flex items-center">
               <input

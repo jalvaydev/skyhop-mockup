@@ -2,7 +2,7 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDown, ChevronsUpDownIcon } from 'lucide-react';
 import { Fragment, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { IFormValues } from './ModalContent';
+import { IFormValues } from '../components/ModalContent';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -34,7 +34,7 @@ function Dropdown({
         {({ open }) => (
           <>
             <div className="relative">
-              <Listbox.Button className="relative w-full cursor-default rounded-xl bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#293D6A] sm:text-sm sm:leading-6">
+              <Listbox.Button className="relative w-full cursor-default rounded-xl bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#293D6A] text-sm leading-6">
                 <span className="block truncate text-[#0C2948]">
                   {value?.name || `Select ${label ?? 'option'}`}
                 </span>
@@ -50,7 +50,7 @@ function Dropdown({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto text-sm bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
                   {options.map((option) => (
                     <Listbox.Option
                       key={option.id}

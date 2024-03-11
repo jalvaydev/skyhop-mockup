@@ -59,7 +59,7 @@ function FileUploader() {
       <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
         Select a manifest you'd like to import
       </label>
-      <div className="flex flex-col h-40 gap-1 p-3 border border-gray-300 rounded-xl">
+      <div className="flex flex-col gap-1 p-3 border border-gray-300 md:h-40 rounded-xl">
         <div {...getRootProps({ className: 'dropzone' })}>
           <div
             style={style}

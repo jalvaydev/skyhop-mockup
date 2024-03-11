@@ -1,12 +1,13 @@
 import { Clock } from 'lucide-react';
 import Seperator from '../ui/Seperator';
-import Dropdown, { DropdownOption } from './Dropdown';
+import Dropdown, { DropdownOption } from '../ui/Dropdown';
 import SwitchButton from '../ui/Switch';
 import Radio from '../ui/Radio';
 import FileUploader from './FileUploader';
 import { forwardRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
+import { Toaster } from '../ui/toaster';
 
 const manifests: DropdownOption[] = [
   { id: 1, name: 'Passport' },
@@ -86,10 +87,10 @@ function ModalContent() {
   );
 
   return (
-    <div className="mx-12 mt-6">
+    <div className="mx-12 mt-6 ">
       <form id="document-upload-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-row gap-4">
-          <div className="flex flex-col w-[420px] pr-8 gap-2">
+        <div className="flex flex-col gap-4 md:flex-row ">
+          <div className="flex flex-col w-full md:w-[420px] md:pr-8 gap-2">
             <Controller
               name="import"
               control={control}
@@ -160,7 +161,7 @@ function ModalContent() {
             </div>
           </div>
 
-          <div className="flex flex-col w-[311px] gap-2">
+          <div className="flex flex-col md:w-[311px] gap-2">
             <div>
               <p className="font-bold leading-5 text-2xs">
                 Split schedule using social distancing?
