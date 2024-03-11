@@ -1,6 +1,7 @@
 import { useDropzone } from 'react-dropzone';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FileIcon } from 'lucide-react';
+import { Progress } from '../ui/Progress';
 
 function FileUploader() {
   const baseStyle = {
@@ -32,6 +33,27 @@ function FileUploader() {
     }),
     [isFocused, isDragAccept, isDragReject],
   );
+
+  const [progress, setProgress] = useState(13);
+
+  useEffect(() => {
+    if (acceptedFiles.length === 0) {
+      setProgress(0);
+      return;
+    }
+  }, [acceptedFiles]);
+
+  const uploadFile = () => {
+    if (acceptedFiles.length === 0) {
+      return;
+    }
+    // Simulate progress
+    let timer = setTimeout(() => setProgress(66), 400);
+    timer = setTimeout(() => setProgress(100), 1000);
+
+    return () => clearTimeout(timer);
+  };
+
   return (
     <div>
       <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
@@ -60,8 +82,12 @@ function FileUploader() {
             </div>
           </div>
         </div>
+        <div>
+          <Progress value={progress} className="w-full h-1 bg-gray-300 " />
+        </div>
         <div className="mx-auto ">
           <button
+            onClick={() => uploadFile()}
             type="button"
             className="px-12 py-2 text-2xs font-semibold text-white bg-[#1F3A68] rounded-lg shadow-sm hover:bg-[#234175] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#294980]"
           >
