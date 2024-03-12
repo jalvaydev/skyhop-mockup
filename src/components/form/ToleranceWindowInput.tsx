@@ -31,7 +31,7 @@ function ToleranceWindowInput({ form }: ToleranceWindowInputProps) {
   );
   return (
     <div>
-      <label htmlFor="manifest" className="font-bold leading-5 text-2xs ">
+      <label htmlFor="toleranceWindow" className="font-bold leading-5 text-2xs ">
         Tolerance Window
       </label>
       <div className="flex h-5 gap-4 mt-2">
@@ -51,10 +51,7 @@ function ToleranceWindowInput({ form }: ToleranceWindowInputProps) {
               <Controller
                 name="toleranceLevel"
                 control={form.control}
-                rules={{
-                  required: 'Please select an client.',
-                }}
-                render={({ field: { onChange, value, onBlur } }) => (
+                render={({ field: { onChange, value } }) => (
                   <DatePicker
                     selected={value}
                     onChange={onChange}
