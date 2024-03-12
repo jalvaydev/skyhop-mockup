@@ -12,7 +12,7 @@ export default function Radio({
 }: {
   options: RadioOption[];
   radioName: string;
-  register: UseFormRegisterReturn<string>;
+  register?: UseFormRegisterReturn<string>;
 }) {
   return (
     <div>
@@ -23,14 +23,14 @@ export default function Radio({
             <div key={option.id} className="flex items-center">
               <input
                 {...register}
-                value={option.id}
+                value={option.name}
                 name={radioName}
                 type="radio"
                 className="w-4 h-4 text-bg-[#1F3A68] border-gray-300 focus:ring-bg-[#1F3A68]"
               />
               <label
                 htmlFor={option.name}
-                className="block ml-3 leading-6 text-gray-900 text-2xs"
+                className="block ml-3 leading-6 text-gray-900 capitalize text-2xs"
               >
                 {option.name}
               </label>

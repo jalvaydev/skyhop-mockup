@@ -1,7 +1,7 @@
 import { useDropzone } from 'react-dropzone';
 import { useEffect, useMemo, useState } from 'react';
 import { FileIcon } from 'lucide-react';
-import { Progress } from '../ui/Progress';
+import { Progress } from '../../ui/progress';
 
 function FileUploader() {
   const baseStyle = {

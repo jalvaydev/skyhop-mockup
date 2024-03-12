@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import Seperator from '../ui/Seperator';
+import Seperator from '../../ui/seperator';
 
 function ModalHeader() {
   return (
